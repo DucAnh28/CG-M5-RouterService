@@ -41,6 +41,10 @@ export class ProductService {
     return this.products;
   }
 
+  getProductTemp(){
+    return this.productTemp;
+  }
+
   findProductById(id:number) {
     for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].id === id){
