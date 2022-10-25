@@ -11,7 +11,7 @@
     <td>{{product.name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
-    <a (click)="findProductById(i+1)" routerLink="/product/edit">Edit</a>
-    <td><button (click)="deleteProduct(i+1)">Delete</button></td>
+    <td><a [routerLink]="['/product/edit',product.id]">Edit</a></td>
+    <td><button (click)="deleteProduct(product.id)">Delete</button></td>
   </tr>
 </table>

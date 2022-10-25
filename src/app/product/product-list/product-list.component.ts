@@ -20,15 +20,21 @@ export class ProductListComponent implements OnInit {
 
   findProductById(id: number) {
     this.productService.findProductById(id);
-    console.log(this.productService.productTemp)
   }
 
   getAll() {
-    this.products = this.productService.getAll();
+    this.productService.getAll().subscribe(productList =>{
+      this.products = productList;
+    },error => {
+      console.log(error);
+    },()=>{
+      console.log('Thanh Cong')
+    });
   }
 
-  deleteProduct(id: number) {
-    this.productService.deleteProduct(id);
-    this.products = this.productService.getAll();
+  deleteProduct(id: number | undefined) {
+    this.productService.deleteProduct(id).subscribe(()=>{
+      this.getAll();
+    })
   }
 }
